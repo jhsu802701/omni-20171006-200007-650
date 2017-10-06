@@ -1,3 +1,5 @@
+# rubocop:disable Metrics/BlockLength
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -88,4 +90,18 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # Mailgun settings
+  config.action_mailer.default_url_options = { host: 'omni-20171006-200007-650.herokuapp.com' }
+  config.action_mailer.smtp_settings = {
+    port: ENV['MAILGUN_SMTP_PORT'],
+    address: ENV['MAILGUN_SMTP_SERVER'],
+    user_name: ENV['MAILGUN_SMTP_LOGIN'],
+    password: ENV['MAILGUN_SMTP_PASSWORD'],
+    domain: 'omni-20171006-200007-650.heroku.com',
+    authentication: :plain
+  }
+  config.action_mailer.delivery_method = :smtp
 end
+
+# rubocop:enable Metrics/BlockLength
