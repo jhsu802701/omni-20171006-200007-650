@@ -1,5 +1,10 @@
 # Temporary OmniAuth App
 
+[![CircleCI](https://circleci.com/gh/jhsu802701/omni-20171006-200007-650.svg?style=svg)](https://circleci.com/gh/jhsu802701/omni-20171006-200007-650)
+[![Dependency Status](https://gemnasium.com/badges/github.com/jhsu802701/omni-20171006-200007-650.svg)](https://gemnasium.com/github.com/jhsu802701/omni-20171006-200007-650)
+[![security](https://hakiri.io/github/jhsu802701/omni-20171006-200007-650/master.svg)](https://hakiri.io/github/jhsu802701/omni-20171006-200007-650/master)
+[![Code Climate](https://codeclimate.com/github/jhsu802701/omni-20171006-200007-650/badges/gpa.svg)](https://codeclimate.com/github/jhsu802701/omni-20171006-200007-650)
+
 Welcome to Temporary OmniAuth App!
 
 ## How was this app created?
