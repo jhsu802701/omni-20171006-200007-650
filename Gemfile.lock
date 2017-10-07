@@ -101,6 +101,10 @@ GEM
       railties (>= 4.1.0, < 5.2)
       responders
       warden (~> 1.2.3)
+    dotenv (2.2.1)
+    dotenv-rails (2.2.1)
+      dotenv (= 2.2.1)
+      railties (>= 3.2, < 5.2)
     email_munger (0.0.0)
     erubi (1.6.1)
     erubis (2.7.0)
@@ -349,6 +353,7 @@ DEPENDENCIES
   capybara-slow_finder_errors (= 0.1.4)
   coffee-rails (= 4.2.2)
   devise (= 4.3.0)
+  dotenv-rails (= 2.2.1)
   email_munger (= 0.0.0)
   faker (= 1.8.4)
   figaro (= 1.1.1)

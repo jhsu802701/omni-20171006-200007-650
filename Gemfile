@@ -144,3 +144,5 @@ gem 'omniauth-github', '1.3.0'
 gem 'omniauth-google-oauth2', '0.5.2'
 gem 'omniauth-twitter', '1.4.0'
 # END: omniauth
+
+gem 'dotenv-rails', '2.2.1' # Needed to export ID and secret values into environment variables
