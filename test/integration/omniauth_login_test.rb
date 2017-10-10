@@ -22,13 +22,6 @@ class OmniauthLoginTest < ActionDispatch::IntegrationTest
     assert page.has_text?('Signed out successfully.')
   end
 
-  def login_and_logout_twitter
-    click_on 'Sign in with Twitter'
-    assert page.has_text?('Successfully authenticated from Twitter account.')
-    click_on 'Logout'
-    assert page.has_text?('Signed out successfully.')
-  end
-
   test 'Can login with Facebook credentials' do
     OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new(
       provider: 'facebook', uid: '100001', confirmed_at: Time.now,
@@ -75,21 +68,5 @@ class OmniauthLoginTest < ActionDispatch::IntegrationTest
     visit root_path
     click_on 'Login'
     login_and_logout_google
-  end
-
-  test 'Can login with Twitter credentials' do
-    OmniAuth.config.mock_auth[:twitter] = OmniAuth::AuthHash.new(
-      provider: 'twitter', uid: '100004', confirmed_at: Time.now,
-      info: { last_name: 'Dorsey', first_name: 'Jack',
-              email: 'jdorsey@twitter.com' }
-    )
-    # From home page
-    visit root_path
-    login_and_logout_twitter
-
-    # From user login page
-    visit root_path
-    click_on 'Login'
-    login_and_logout_twitter
   end
 end
