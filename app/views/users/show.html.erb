@@ -10,6 +10,13 @@
     <br>
     Email: <%= raw(EmailMunger.encode(@user.email)) %>
     <br>
+    <% if @user.provider == 'facebook' %>
+      OmniAuth Service Provider: Facebook<br>
+    <% elsif @user.provider == 'github' %>
+      OmniAuth Service Provider: GitHub<br>
+    <% elsif @user.provider == 'google_oauth2' %>
+      OmniAuth Service Provider: Google<br>
+    <% end %>
     <% # BEGIN: delete button %>
     <% if admin_signed_in? %>
       <%= link_to "Delete #{@user.first_name} #{@user.last_name} (#{@user.username})", @user,

@@ -8,6 +8,13 @@
   <% if user_signed_in? %>
     <% # BEGIN: USER SECTION %>
     You are logged in as a user (<%= current_user.username %>).
+    <% if current_user.provider == 'facebook' %>
+      <br>You logged in with Facebook.<br>
+    <% elsif current_user.provider == 'github' %>
+      <br>You logged in with GitHub.<br>
+    <% elsif current_user.provider == 'google_oauth2' %>
+      <br>You logged in with Google.<br>
+    <% end %>
     <% # END: USER SECTION %>
   <% elsif admin_signed_in? %>
     <% # BEGIN: ADMIN SECTION %>

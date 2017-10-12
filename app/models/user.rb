@@ -32,7 +32,7 @@
 #
 class User < ApplicationRecord
   # Limit the parameters available for searching the user database
-  RANSACKABLE_ATTRIBUTES = %w[email username last_name first_name].freeze
+  RANSACKABLE_ATTRIBUTES = %w[email username last_name first_name provider].freeze
   def self.ransackable_attributes(_auth_object = nil)
     RANSACKABLE_ATTRIBUTES + _ransackers.keys
   end
@@ -89,18 +89,6 @@ class User < ApplicationRecord
       if auth.provider == 'google'
         user.last_name = auth.info.last_name
         user.first_name = auth.info.first_name
-      end
-    end
-  end
-
-  def self.new_with_session(params, session)
-    super.tap do |user|
-      if data = session['devise.facebook_data'] && session['devise.facebook_data']['extra']['raw_info']
-        user.email = data['email'] if user.email?
-      elsif data = session['devise.github_data'] && session['devise.github_data']['extra']['raw_info']
-        user.email = data['email'] if user.email?
-      elsif data = session['devise.google_data'] && session['devise.google_data']['extra']['raw_info']
-        user.email = data['email'] if user.email?
       end
     end
   end
