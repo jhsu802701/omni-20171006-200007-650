@@ -158,3 +158,32 @@ def begin_admin_password_reset(e)
   fill_in('Email', with: e)
   click_on 'Send me reset password instructions'
 end
+
+# rubocop:disable Metrics/AbcSize
+# rubocop:disable Metrics/MethodLength
+def create_omniauth_users
+  OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new(
+    provider: 'facebook', uid: '100001', confirmed_at: Time.now,
+    info: { last_name: 'Zuckerberg', first_name: 'Mark',
+            email: 'mzuckerberg@facebook.com' }
+  )
+  OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(
+    provider: 'github', uid: '100002', confirmed_at: Time.now,
+    info: { last_name: 'Wanstrath', first_name: 'Chris',
+            email: 'cwanstrath@github.com' }
+  )
+  OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new(
+    provider: 'google_oauth2', uid: '100003', confirmed_at: Time.now,
+    info: { last_name: 'Brin', first_name: 'Sergey',
+            email: 'sbrin@gmail.com' }
+  )
+  visit root_path
+  click_on 'Sign in with Facebook'
+  click_on 'Logout'
+  click_on 'Sign in with GitHub'
+  click_on 'Logout'
+  click_on 'Sign in with Google'
+  click_on 'Logout'
+end
+# rubocop:enable Metrics/AbcSize
+# rubocop:enable Metrics/MethodLength
